@@ -62,5 +62,3 @@ mkdir -p "${o}"
 	done
 done) >> /dev/null
 
-echo "s = ${i}"
-echo "p = ${o}"
