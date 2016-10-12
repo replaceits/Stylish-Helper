@@ -26,39 +26,51 @@ fi
 
 mkdir -p "${o}"
 
-(sqlite3 "${i}" "SELECT id FROM styles" | while read id; do
-	sqlite3 "${i}" "SELECT name FROM styles WHERE id=${id}" | while read name; do
-		mkdir -p "${o}/${name}"
-		echo "${id}" > "${o}/${name}/.styles"
-		
-		sqlite3 "${i}" "SELECT url FROM styles WHERE id=${id}" | while read url; do
-			echo "${url}" >> "${o}/${name}/.styles"
-		done
-		sqlite3 "${i}" "SELECT updateUrl FROM styles WHERE id=${id}" | while read updateUrl; do
-			echo "${updateUrl}" >> "${o}/${name}/.styles"
-		done
-		sqlite3 "${i}" "SELECT md5Url FROM styles WHERE id=${id}" | while read md5Url; do
-			echo "${md5Url}" >> "${o}/${name}/.styles"
-		done
-		echo "${name}" >> "${o}/${name}/.styles"
-		sqlite3 "${i}" "SELECT enabled FROM styles WHERE id=${id}" | while read enabled; do
-			echo "${enabled}" >> "${o}/${name}/.styles"
-		done
-		sqlite3 "${i}" "SELECT originalCode FROM styles WHERE id=${id}" | while read originalCode; do
-			echo "${originalCode}" >> "${o}/${name}/.styles"
-		done
-		sqlite3 "${i}" "SELECT idUrl FROM styles WHERE id=${id}" | while read idUrl; do
-            echo "${idUrl}" >> "${o}/${name}/.styles"
-        done
-		sqlite3 "${i}" "SELECT applyBackgroundUpdates FROM styles WHERE id=${id}" | while read applyBackgroundUpdates; do
-            echo "${applyBackgroundUpdates}" >> "${o}/${name}/.styles"
-        done
-		sqlite3 "${i}" "SELECT originalMd5 FROM styles WHERE id=${id}" | while read originalMd5; do
-            echo "${originalMd5}" >> "${o}/${name}/.styles"
-        done
-		sqlite3 "${i}" "SELECT code FROM styles WHERE id=${id}" | while read code; do
-			echo "${code}" >> "${o}/${name}/${name}.css"
-		done
-	done
-done) >> /dev/null
+sqlite3 "${i}" "SELECT id FROM styles" | while read id; do
+	name="$(sqlite3 "${i}" "SELECT name FROM styles WHERE id=${id}")"
+
+	mkdir -p "${o}/${name}"
+
+	echo "${id}" > "${o}/${name}/.styles"
+
+	url="$(sqlite3 "${i}" "SELECT url FROM styles WHERE id=${id}")"
+	echo "${url}" >> "${o}/${name}/.styles"
+
+	updateUrl="$(sqlite3 "${i}" "SELECT updateUrl FROM styles WHERE id=${id}")"
+	echo "${updateUrl}" >> "${o}/${name}/.styles"
+
+	md5Url="$(sqlite3 "${i}" "SELECT md5Url FROM styles WHERE id=${id}")"
+	echo "${md5Url}" >> "${o}/${name}/.styles"
+
+	echo "${name}" >> "${o}/${name}/.styles"
+
+	enabled="$(sqlite3 "${i}" "SELECT enabled FROM styles WHERE id=${id}")"
+	echo "${enabled}" >> "${o}/${name}/.styles"
+
+	originalCode="$(sqlite3 "${i}" "SELECT originalCode FROM styles WHERE id=${id}")"
+	echo "${originalCode}" >> "${o}/${name}/.styles"
+
+	idUrl="$(sqlite3 "${i}" "SELECT idUrl FROM styles WHERE id=${id}")"
+	echo "${idUrl}" >> "${o}/${name}/.styles"
+
+	applyBackgroundUpdates="$(sqlite3 "${i}" "SELECT applyBackgroundUpdates FROM styles WHERE id=${id}")"
+	echo "${applyBackgroundUpdates}" >> "${o}/${name}/.styles"
+
+	originalMd5="$(sqlite3 "${i}" "SELECT originalMd5 FROM styles WHERE id=${id}")"
+	echo "${originalMd5}" >> "${o}/${name}/.styles"
+
+	code="$(sqlite3 "${i}" "SELECT code FROM styles WHERE id=${id}")"
+	echo "${code}" > "${o}/${name}/${name}.css"
+
+	style_meta_id="$(sqlite3 "${i}" "SELECT id FROM style_meta WHERE style_id=${id}")"
+	echo "${style_meta_id}" > "${o}/${name}/.style_meta"
+
+	echo "${id}" >> "${o}/${name}/.style_meta"
+
+	style_meta_name="$(sqlite3 "${i}" "SELECT name FROM style_meta WHERE style_id=${id}")"
+	echo "${style_meta_name}" >> "${o}/${name}/.style_meta"
+
+	style_meta_value="$(sqlite3 "${i}" "SELECT value FROM style_meta WHERE style_id=${id}")"
+	echo "${style_meta_value}" >> "${o}/${name}/.style_meta"
+done
 
