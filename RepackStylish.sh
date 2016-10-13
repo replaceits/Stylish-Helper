@@ -63,28 +63,28 @@ if [ ! -e "${o}" ] ; then
 		if [ "$v" -ge 2 ] ; then
 			echo -n " at ${o}"
 			if [ "$v" -ge 3 ] ; then
-				echo -n -e "\n${o}\n"
-				echo -n -e "\tstyles\n"
-				echo -n -e "\t\tid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT\n"
-				echo -n -e "\t\turl TEXT\n"
-				echo -n -e "\t\tupdateUrl TEXT\n"
-				echo -n -e "\t\tmd5Url TEXT\n"
-				echo -n -e "\t\tname TEXT NOT NULL\n"
-				echo -n -e "\t\tcode TEXT NOT NULL\n"
-				echo -n -e "\t\tenabled INTEGER NOT NULL\n"
-				echo -n -e "\t\toriginalCode TEXT NULL\n"
-				echo -n -e "\t\tidUrl TEXT NULL\n"
-				echo -n -e "\t\tapplyBackgroundUpdates INTEGER NOT NULL DEFAULT 1\n"
-				echo -n -e "\t\toriginalMd5 TEXT NULL\n"
-				echo -n -e "\tstyle_meta\n"
-				echo -n -e "\t\tid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT\n"
-				echo -n -e "\t\tstyle_id INTEGER NOT NULL\n"
-				echo -n -e "\t\tname TEXT NOT NULL\n"
-				echo -n -e "\t\tvalue TEXT NOT NULL"
+				echo -n -e "\n${o}"
+				echo -n -e "\n\tstyles"
+				echo -n -e "\n\t\tid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+				echo -n -e "\n\t\turl TEXT"
+				echo -n -e "\n\t\tupdateUrl TEXT"
+				echo -n -e "\n\t\tmd5Url TEXT"
+				echo -n -e "\n\t\tname TEXT NOT NULL"
+				echo -n -e "\n\t\tcode TEXT NOT NULL"
+				echo -n -e "\n\t\tenabled INTEGER NOT NULL"
+				echo -n -e "\n\t\toriginalCode TEXT NULL"
+				echo -n -e "\n\t\tidUrl TEXT NULL"
+				echo -n -e "\n\t\tapplyBackgroundUpdates INTEGER NOT NULL DEFAULT 1"
+				echo -n -e "\n\t\toriginalMd5 TEXT NULL"
+				echo -n -e "\n\tstyle_meta"
+				echo -n -e "\n\t\tid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+				echo -n -e "\n\t\tstyle_id INTEGER NOT NULL"
+				echo -n -e "\n\t\tname TEXT NOT NULL"
+				echo -n -e "\n\t\tvalue TEXT NOT NULL"
 			fi
 		fi
 		echo ""
 	fi
 fi
 
-
+exit 0
