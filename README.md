@@ -17,4 +17,4 @@ Usage: DumpStylish.sh -v 0-3 -q -h -i InputStylish.sqlite -o OutputDirectory
 		2	 a bit more information
 		3	 a ton of information
 	-q	Quiet no output same as -v 0
-	-h	Display help](https://i.imgur.com/5bC6YQp.png)
+	-h	Display help](https://i.imgur.com/KBEIOLt.png)
