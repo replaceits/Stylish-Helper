@@ -33,7 +33,8 @@ usage() {
 usageHelp() {
 	echo "Usage: $0 [-v {0-3}] [-q] [-h] -i InputStylish.sqlite -o OutputDirectory" 1>&2;
 	echo -e "\t-i\t[InputStylish.sqlite]\tSelect the stylish.sqlite file to dump\n" 1>&2;
-	echo -e "\t-o\t[OutputDirectory]\tSelect the output directory to dump the contents, if the directory doesn't exist it will be made\n" 1>&2;
+	echo -e "\t-o\t[OutputDirectory]\tSelect the output directory to dump the contents" 1>&2;
+	echo -e "\t\t\t\t\tIf the directory doesn't exist it will be made\n" 1>&2;
 	echo -e "\t-v\t[verbose level 0-3]" 1>&2;
 	echo -e "\t\t0\t quiet (no) output" 1>&2;
 	echo -e "\t\t1\t normal level of output" 1>&2;
@@ -49,7 +50,7 @@ usageHelp() {
 # Globals:
 #   None
 # Arguments:
-#   line_number
+#	line_number
 #	error_message
 # Returns:
 #   1
