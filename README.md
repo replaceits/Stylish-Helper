@@ -18,3 +18,6 @@ Usage: DumpStylish.sh -v 0-3 -q -h -i InputStylish.sqlite -o OutputDirectory
 		3	 a ton of information
 	-q	Quiet no output same as -v 0
 	-h	Display help](https://i.imgur.com/KBEIOLt.png)
+
+## Wiki
+Check out the wiki [here!](https://github.com/replaceits/Stylish-Helper/wiki)
